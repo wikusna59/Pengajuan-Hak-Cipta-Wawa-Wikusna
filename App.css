@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: #fafafa;
+  color: #18181b;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(to bottom right, #fafafa, #ffffff, #f0fdf4);
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 50;
+  background-image: url('https://images.unsplash.com/photo-1664939982461-0ba80297f44e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHw0fHxmaWxtJTIwZ3JhaW4lMjB0ZXh0dXJlJTIwb3ZlcmxheSUyMGJsYWNrfGVufDB8fHx8MTc3MjQ1MDUyNHww&ixlib=rb-4.1.0&q=85');
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-mono, code, pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.react-flow__node {
+  cursor: pointer;
+}
+
+.react-flow__edge {
+  cursor: pointer;
+}
+
+.react-flow__controls {
+  background: #0F0F0F !important;
+  border: 1px solid #27272A !important;
+}
+
+.react-flow__controls button {
+  background: #0F0F0F !important;
+  border-bottom: 1px solid #27272A !important;
+  color: #A1A1AA !important;
+}
+
+.react-flow__controls button:hover {
+  background: #18181b !important;
+  color: #FFFFFF !important;
+}
+
+.react-flow__minimap {
+  background: #0F0F0F !important;
+  border: 1px solid #27272A !important;
+}
+
+/* Force hide ReactFlow attribution with overlay */
+.react-flow__attribution {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.react-flow__panel {
+  display: none !important;
+}
+
+.react-flow__panel.react-flow__controls {
+  display: flex !important;
+}
+
+.react-flow__panel.react-flow__minimap {
+  display: block !important;
+}
+
+/* Hide all attribution panels */
+.react-flow__panel.react-flow__attribution {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Create white overlay at bottom right to cover attribution */
+.react-flow__renderer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 40px;
+  background: #f9fafb;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Also for dark backgrounds */
+.bg-gray-50 .react-flow__renderer::after,
+.bg-white .react-flow__renderer::after {
+  background: #f9fafb;
+}
+
+/* Hide any links to reactflow or emergent */
+.react-flow a[href*="reactflow"],
+.react-flow a[href*="emergent"],
+a[href*="reactflow"],
+a[href*="emergent"],
+.react-flow__attribution a,
+[class*="attribution"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Additional coverage for any text containing "Made with" */
+.react-flow__viewport ~ div:last-child {
+  display: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F0F0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
